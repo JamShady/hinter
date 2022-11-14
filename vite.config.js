@@ -8,6 +8,8 @@ export default defineConfig({
         },
     },
     plugins: [
-        dts(),
+        dts({
+            exclude: './src/**/*.test.ts',
+        }),
     ],
 })
