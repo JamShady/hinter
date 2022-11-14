@@ -1,6 +1,20 @@
 {
   "name": "@shady/hinter",
+  "description": "Utility to expand CSS hints for purge tools",
+  "author": "Jamshed Javed",
+  "homepage": "https://github.com/JamShady/hinter#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JamShady/hinter.git"
+  },
+  "keywords": [
+    "hints",
+    "purge"
+  ],
   "version": "0.0.0",
+  "bugs": {
+    "url": "https://github.com/JamShady/hinter/issues"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
