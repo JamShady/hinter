@@ -9,3 +9,10 @@ That's no fun.
 
 So this utility can be used as a pre-processor to transform *hints* within your source code to produce
 an expanded list of class names that the CSS management tool can then pick up on, hopefully providing the best of both worlds.
+
+## Implementation
+
+Hints are added to your source code by way of comments, with a keyword prefix (which defaults to 'hint')
+
+The following are supported:
+* End-Of-Line comments, i.e. `some source code // hint ...`
