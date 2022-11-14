@@ -16,3 +16,4 @@ Hints are added to your source code by way of comments, with a keyword prefix (w
 
 The following are supported:
 * End-Of-Line comments, i.e. `some source code // hint ...`
+* Hash comments, i.e. `some source code # hint ...`
