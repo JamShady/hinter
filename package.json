@@ -20,6 +20,8 @@
   "main": "./dist/hinter.cjs",
   "module": "./dist/hinter.js",
   "scripts": {
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
     "dev": "vite",
     "build": "tsc && vite build",
     "build-watch": "tsc && vite build --watch",
@@ -27,11 +29,14 @@
   },
   "files": [
     "src/",
+    "!src/**/*.test.ts",
     "dist/"
   ],
   "devDependencies": {
+    "@vitest/coverage-v8": "^2.1",
     "typescript": "^5.6",
     "vite": "^5.4",
-    "vite-plugin-dts": "^4.2"
+    "vite-plugin-dts": "^4.2",
+    "vitest": "^2.1"
   }
 }
