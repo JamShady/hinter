@@ -31,6 +31,7 @@ export default abstract class {
                     const [full, hint] = parts
                     return {
                         full,
+                        curr: hint,
                         hint,
                     }
                 }

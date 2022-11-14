@@ -4,6 +4,7 @@ type Keywords = Keyword[]
 
 type HintMatch = {
     full: string
+    curr: string
     hint: string
 }
 type HintMatches = HintMatch[]
