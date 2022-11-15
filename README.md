@@ -33,3 +33,7 @@ The following are supported:
    * hint ...
    **/
   ```
+
+## Hint Format
+
+The hints are just a series of class names that need to be parsed out
