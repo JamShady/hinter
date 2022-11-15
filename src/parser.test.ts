@@ -38,4 +38,21 @@ describe('Hint Parser Tests', () => {
 
     it('Inline Variables Are Processed', test('colors=gr(a|e)y foo-$colors', ['foo-gray','foo-grey']))
 
+    it('Overwrites Variables', test(
+        'colors=$colors|gray foo-$colors',
+        ['foo-red','foo-blue','foo-gray'],
+        { colors: ['red','blue'] }
+    ))
+
+    it('Variables Overwrites With Options', test(
+        'colors=$colors|gr(a|e)y foo-$colors',
+        ['foo-red','foo-blue','foo-gray', 'foo-grey'],
+        { colors: ['red','blue'] }
+    ))
+
+    it('Sequential Variable Overwrites', test(
+        'colors=red|orange foo-$colors colors=yellow|green bar-$colors colors=$colors|blue baz-$colors',
+        ['foo-red','foo-orange','bar-yellow','bar-green','baz-yellow','baz-green','baz-blue']
+    ))
+
 })
