@@ -10,6 +10,33 @@ That's no fun.
 So this utility can be used as a pre-processor to transform *hints* within your source code to produce
 an expanded list of class names that the CSS management tool can then pick up on, hopefully providing the best of both worlds.
 
+## Usage
+
+### Installation
+```javascript
+npm install -D https://github.com/JamShady/hinter.git
+```
+
+### Parsing
+```typescript
+import hinter from 'hinter'
+
+const transformed = hinter(
+    sourceCode: string,
+    variables: { [key:string]: string[] },
+    triggers: string|string[] = 'hint'
+)
+```
+
+### TailwindCss
+In your `tailwind.config.js` file, add
+```javascript
+module.exports = {
+  content: {
+    transform: sourceCode => hinter(sourceCode, variables, triggers),
+  },
+```
+
 ## Implementation
 
 Hints are added to your source code by way of comments, with a keyword prefix (which defaults to 'hint')
