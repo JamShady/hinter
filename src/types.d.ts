@@ -9,6 +9,11 @@ type HintMatch = {
 }
 type HintMatches = HintMatch[]
 
+type Variable = string
+type Variables = {
+    [x:string]: Variable[]
+}
+
 interface Matcher {
     matches: (sourceCode: SourceCode, keywords: Keywords) => HintMatches
 }
