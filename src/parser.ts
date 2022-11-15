@@ -52,13 +52,14 @@ export default class {
      * Generates a callback to process each hint, respecting variable assignment and expansion
      */
     protected processWith = (variables: Variables) => (hint: string): string[] => {
+        hint = this.replace(hint, variables)
+
         if (hint.includes('=')) {
             const [key,val] = hint.split('=')
             variables[key] = val.split('|')
             return []
         }
 
-        hint = this.replace(hint, variables)
         return this.expand(hint)
     }
 
