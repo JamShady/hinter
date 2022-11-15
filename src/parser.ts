@@ -33,11 +33,26 @@ export default class {
         return [hint] // convert to an array
     }
 
+    /**
+     * Generates a callback to replace all the variables within a hint, i.e. given colors=blue|red
+     * foo-$colors-bar => foo-(blue|red)-bar
+     */
+    protected replace = (variables: Variables) => (hint: string) => {
+        // replace all variables in order of length (i.e. longest first)
+        const keys = Object.keys(variables).sort((a, b) => b.length - a.length)
+        keys.forEach(key => {
+            if (hint.includes(`$${key}`)) {
+                hint = hint.replaceAll(`$${key}`, `(${variables[key].join('|')})`)
+            }
+        })
+        return hint
+    }
 
     /**
      * Parses a hint into an array of classes
      */
-    public parse = (hint: string) => this.hints(this.optional(hint))
+    public parse = (hint: string, variables: Variables = {}) => this.hints(this.optional(hint))
+        .map(this.replace(variables))
         .map(this.expand)
         .flat()
         .filter((hint, index, self) => self.indexOf(hint) === index)

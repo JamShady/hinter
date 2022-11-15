@@ -7,9 +7,9 @@ import Parser from './parser'
 
 describe('Hint Parser Tests', () => {
 
-    const test = (hint: string, expected: string[]) => () => expect(
+    const test = (hint: string, expected: string[], variables: Variables = {}) => () => expect(
         (new Parser)
-            .parse(hint)
+            .parse(hint, variables)
             .sort()
     ).to.deep.equal(expected.sort())
 
@@ -27,5 +27,11 @@ describe('Hint Parser Tests', () => {
     ]))
 
     it('Tests Optional Params', test('foo(-bar)?', ['foo','foo-bar']))
+
+    it('Expands Variables', test(
+        'foo-$colors-bar',
+        ['foo-red-bar','foo-blue-bar'],
+        { colors: ['red','blue'] }
+    ))
 
 })
