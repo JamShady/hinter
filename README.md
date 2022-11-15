@@ -25,3 +25,11 @@ The following are supported:
         hint ...
     -->
   ```
+* DocBlocks, i.e. `/* hint ... */`
+  * You can also use it within a larger block, i.e.
+  ```javascript
+  /**
+   * this preamble will be ignored
+   * hint ...
+   **/
+  ```
