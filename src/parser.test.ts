@@ -34,4 +34,6 @@ describe('Hint Parser Tests', () => {
         { colors: ['red','blue'] }
     ))
 
+    it('Allows Defining Inline Variables', test('colors=blue|red foo-$colors', ['foo-blue','foo-red']))
+
 })

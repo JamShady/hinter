@@ -37,7 +37,7 @@ export default class {
      * Generates a callback to replace all the variables within a hint, i.e. given colors=blue|red
      * foo-$colors-bar => foo-(blue|red)-bar
      */
-    protected replace = (variables: Variables) => (hint: string) => {
+    protected replace = (hint: string, variables: Variables) => {
         // replace all variables in order of length (i.e. longest first)
         const keys = Object.keys(variables).sort((a, b) => b.length - a.length)
         keys.forEach(key => {
@@ -49,11 +49,24 @@ export default class {
     }
 
     /**
+     * Generates a callback to process each hint, respecting variable assignment and expansion
+     */
+    protected processWith = (variables: Variables) => (hint: string): string[] => {
+        if (hint.includes('=')) {
+            const [key,val] = hint.split('=')
+            variables[key] = val.split('|')
+            return []
+        }
+
+        hint = this.replace(hint, variables)
+        return this.expand(hint)
+    }
+
+    /**
      * Parses a hint into an array of classes
      */
     public parse = (hint: string, variables: Variables = {}) => this.hints(this.optional(hint))
-        .map(this.replace(variables))
-        .map(this.expand)
+        .map(this.processWith(variables))
         .flat()
         .filter((hint, index, self) => self.indexOf(hint) === index)
 
