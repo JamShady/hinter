@@ -20,6 +20,8 @@ export default class {
                 return matches[1]   // bip|bap
                     .split('|') // ['bip','bap']
                     .map(option => hint.replace(matches[0], option)) // 'foo-(bip|bap)-bar'.replace('(bip|bap)','bip')
+                    .map(this.expand)
+                    .flat()
             }
         }
 

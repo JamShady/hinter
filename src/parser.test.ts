@@ -17,4 +17,6 @@ describe('Hint Parser Tests', () => {
 
     it('Tests Single Expansion', test('foo-(bip|bap)-bar', ['foo-bip-bar','foo-bap-bar']))
 
+    it('Tests Multi Expansion', test('(one|two)-(a|b)', ['one-a','one-b','two-a','two-b']))
+
 })
