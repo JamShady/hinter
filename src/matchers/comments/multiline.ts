@@ -18,17 +18,16 @@ export default abstract class extends base {
             .join(' ')
     }
 
-    protected matches(sourceCode: SourceCode, keywords: Keywords, head: string, tail: string): HintMatches {
+    protected matches(sourceCode: SourceCode, keywords: Keywords, head: string, tail: string, lineNormaliser = (line: string) => line): HintMatches {
         return super.matches(sourceCode, keywords, head, tail)
             .map((match: HintMatch): HintMatch => {
                 const lines = match.hint
                     .trim()
                     .split(/\n/)
-                    .map(line => line.trim())
 
                 // strip off lines until we find one that starts with a hint
                 while(lines.length) {
-                    const line = lines[0]
+                    const line = lineNormaliser(lines[0]).trim()
 
                     if (keywords.some(keyword => line.startsWith(keyword))) {
                         lines[0] = line // restore as a cleaned version, with the hint prefixed
