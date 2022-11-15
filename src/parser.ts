@@ -11,6 +11,11 @@ export default class {
         .filter((hint, index, self) => self.indexOf(hint) === index)
 
     /**
+     * foo(-bar)? => foo(-bar|)
+     */
+    protected optional = (hint: string) => hint.replaceAll(')?','|)')
+
+    /**
      * foo-(bip|bap)-bar => ['foo-bip-bar', 'foo-bap-bar']
      */
     protected expand = (hint: string): string[] => {
@@ -32,7 +37,7 @@ export default class {
     /**
      * Parses a hint into an array of classes
      */
-    public parse = (hint: string) => this.hints(hint)
+    public parse = (hint: string) => this.hints(this.optional(hint))
         .map(this.expand)
         .flat()
         .filter((hint, index, self) => self.indexOf(hint) === index)

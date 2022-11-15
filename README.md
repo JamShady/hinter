@@ -44,3 +44,5 @@ You can use multiple options, every permutation will be generated,
 i.e. `(top|left)-(padding|margin)` yields `top-padding top-margin left-padding left-margin`
 
 You can even nest options, i.e. `foo-(bip|ba(p|r))` yields `foo-bip foo-bap foo-bar`
+
+Optionals can also be, optional? `foo(-bar)?` yields `foo foo-bar`
