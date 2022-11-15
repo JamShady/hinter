@@ -26,4 +26,6 @@ describe('Hint Parser Tests', () => {
         'left-rightish-right',
     ]))
 
+    it('Tests Optional Params', test('foo(-bar)?', ['foo','foo-bar']))
+
 })
