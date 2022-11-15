@@ -50,3 +50,5 @@ Optionals can also be, optional? `foo(-bar)?` yields `foo foo-bar`
 And you can use variables, i.e. `(left|right)-$property` yields `left-margin left-padding right-margin right-padding` (where the variable `$property` has been defined as `margin|property` or `[margin,property]` as a passed in property)
 
 You can define variables inline, i.e. `color=red|blue text-$color` yields `text-red text-blue`
+
+Inline variables are also processed, i.e. `color=gr(a|e)y text-$color` yields `text-gray text-grey`
