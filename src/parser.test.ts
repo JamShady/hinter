@@ -15,4 +15,6 @@ describe('Hint Parser Tests', () => {
 
     it('Tests Raw Hint Passing', test('red blue', ['red','blue']))
 
+    it('Tests Single Expansion', test('foo-(bip|bap)-bar', ['foo-bip-bar','foo-bap-bar']))
+
 })

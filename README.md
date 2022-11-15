@@ -37,3 +37,5 @@ The following are supported:
 ## Hint Format
 
 The hints are just a series of class names that need to be parsed out
+
+You can provide combinations options, i.e. `foo-(bip|bap)-bar` which yields `foo-bip-bar foo-bap-bar`
