@@ -35,5 +35,6 @@ export default class {
     public parse = (hint: string) => this.hints(hint)
         .map(this.expand)
         .flat()
+        .filter((hint, index, self) => self.indexOf(hint) === index)
 
 }
