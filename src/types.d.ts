@@ -17,3 +17,5 @@ type Variables = {
 interface Matcher {
     matches: (sourceCode: SourceCode, keywords: Keywords, variables: Variables) => HintMatches
 }
+
+type Hinter = (sourceCode: SourceCode, variables: Variables, triggers: Keyword|Keywords) => SourceCode
