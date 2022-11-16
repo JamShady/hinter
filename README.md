@@ -52,3 +52,10 @@ And you can use variables, i.e. `(left|right)-$property` yields `left-margin lef
 You can define variables inline, i.e. `color=red|blue text-$color` yields `text-red text-blue`
 
 Inline variables are also processed, i.e. `color=gr(a|e)y text-$color` yields `text-gray text-grey`
+
+## Auto-Detection
+
+The hinter will also try to intelligently pick up variable references within your code-base, presuming the variables to be named in plurality, and the usage as singular, i.e. given the variables `{ colors: ['red','blue'] }`,
+the hinter will replace occurrences of `text-${color}` with `text-red text-blue`.
+
+It'll even match for sub-variables, i.e. `text-${user.color}` will also yield the same result.
