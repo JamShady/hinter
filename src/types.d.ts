@@ -15,5 +15,5 @@ type Variables = {
 }
 
 interface Matcher {
-    matches: (sourceCode: SourceCode, keywords: Keywords) => HintMatches
+    matches: (sourceCode: SourceCode, keywords: Keywords, variables: Variables) => HintMatches
 }
